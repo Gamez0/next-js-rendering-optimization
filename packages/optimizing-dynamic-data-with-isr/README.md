@@ -1,36 +1,60 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Optimizing Dynamic Data Updates with ISR in Next.js
+## Flow of the Problem and Solution
+### Flow with SSR / CSR
+```mermaid
+sequenceDiagram
+    participant User
+    participant Client
+    participant Server
+    participant CDN
+    
+    User->>Client: Route to /music
+    Server->>Client: Response page with Music Key
+    User->>Client: Selects Track and Clicks Play
+    Client->>Server: Request Music URL (Key)
+    Server->>Client: Response with Temporary CDN URL
+    Client->>CDN: Request Music File from CDN
+    CDN->>Client: Send Music File
+    Client->>User: Start Playback
 
-## Getting Started
-
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
+### Flow with ISR (Optimized Solution)
+```mermaid
+sequenceDiagram
+    participant User
+    participant Client
+    participant Server
+    participant CDN
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+    User->>Client: Route to /music
+    Server->>Client: Send page with embedded music URL
+    User->>Client: Selects Track and Clicks Play
+    Client->>CDN: Request music file using URL
+    CDN->>Client: Send music file    
+    Client->>User: Start Playback  
+    Server->>CDN: Request updated music URL (ISR)
+    CDN->>Server: Return updated music URL
+```
+## Overview
+This project compares different rendering strategies in Next.js — SSR, CSR, SSG, and ISR — to demonstrate the performance benefits and trade-offs for each. The focus is on optimizing media streaming with temporary URLs, particularly for scenarios involving network latency between the server and distant clients.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Problem Statement
+When playing music, the flow was as follows:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. User selects a track and clicks play.
 
-## Learn More
+2. The client requests the music URL through an API.
 
-To learn more about Next.js, take a look at the following resources:
+3. The server responds with a temporary CDN URL.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+4. The client requests the music file from the CDN.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+5. The music file is downloaded, and playback begins.
 
-## Deploy on Vercel
+The problem? The process took too long for users far from the server (like those in the U.S.).
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Solution Strategy
+We compared SSR, CSR, and ISR to solve the issue and found that ISR was the most effective solution for optimizing performance.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Conclusion
+While SSR seemed like the optimal solution, we discovered that ISR provided the best results for this specific case. By pre-generating static content with ISR and periodically updating the CDN URLs, we could reduce the unnecessary network requests and improve performance.
