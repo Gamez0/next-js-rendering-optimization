@@ -1,0 +1,25 @@
+# Node.js dependencies
+/node_modules/
+
+# Next.js build output
+/.next/
+/out/
+
+# TypeScript build output
+/dist/
+
+# Yarn v2/berry
+/.yarn/
+.yarnrc.yml
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# IDE settings
+.vscode/
+
+# OS specific files
+.DS_Store
+Thumbs.db
