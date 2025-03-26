@@ -1,36 +1,47 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Next.js Rendering Optimization
 
-## Getting Started
+## Introduction
+This repository demonstrates and compares four different data fetching strategies in Next.js: **CSR (Client-Side Rendering)**, **SSR (Server-Side Rendering)**, **SSG (Static Site Generation)**, and **ISR (Incremental Static Regeneration)**. Each of these strategies is applied to different pages in the project to optimize page rendering and data fetching, resulting in improved performance, scalability, and SEO.
 
-First, run the development server:
+## Pages
 
+1. **CSR (Client-Side Rendering)** - `pages/index.tsx`:  
+   - Data is fetched on the client-side using React's `useEffect` hook and `axios` for making HTTP requests.
+   - Ideal for pages where data can be fetched after the page loads, such as user dashboards or dynamic content.
+
+2. **SSR (Server-Side Rendering)** - `pages/server.tsx`:  
+   - Data is fetched on the server-side on each request using Next.js's `getServerSideProps` method.
+   - Suitable for pages that need fresh data on each request, such as user profiles or frequently updated content.
+
+3. **SSG (Static Site Generation)** - `pages/static.tsx`:  
+   - Data is fetched at build time using `getStaticProps` and is then cached for static serving.
+   - Great for pages with content that doesn’t change often, such as blogs or marketing pages.
+
+4. **ISR (Incremental Static Regeneration)** - `pages/incremental.tsx`:  
+   - Data is fetched at build time with the ability to regenerate static pages incrementally based on a defined revalidation period.
+   - Combines the benefits of static generation with dynamic updates, suitable for content that changes periodically but doesn’t require full rebuilds.
+
+## Setup
+
+To set up the project locally:
+
+1. Clone the repository:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+   git clone <repository_url>
 ```
+2. Navigate to the project directory:
+```bash
+cd csr-ssr-ssg-isr-comparison
+```
+3. Install dependencies:
+```bash
+yarn install
+```
+4. Start the development server:
+```bash
+yarn dev
+```
+Visit http://localhost:3000 in your browser to view the project in action.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Conclusion
+By using SSR, CSR, SSG, and ISR, this project demonstrates how to optimize data fetching strategies based on specific use cases. Each strategy helps achieve faster page loading, improved SEO, and better scalability. With ISR, you can update static content dynamically without the need for full site rebuilds, making it a powerful option for modern web applications.
