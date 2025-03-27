@@ -51,7 +51,10 @@ When playing music, the flow was as follows:
 
 5. The music file is downloaded, and playback begins.
 
-The problem? The process took too long for users far from the server (like those in the U.S.).
+
+❌ Slow playback for users far from the server (e.g., in the U.S.).
+
+❌ Increased server load due to API requests every time a track is played.
 
 ## Solution Strategy
 We compared SSR, CSR, and ISR to solve the issue and found that ISR was the most effective solution for optimizing performance.
