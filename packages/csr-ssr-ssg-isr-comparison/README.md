@@ -2,7 +2,55 @@
 
 ## Introduction
 This repository demonstrates and compares four different data fetching strategies in Next.js: **CSR (Client-Side Rendering)**, **SSR (Server-Side Rendering)**, **SSG (Static Site Generation)**, and **ISR (Incremental Static Regeneration)**. Each of these strategies is applied to different pages in the project to optimize page rendering and data fetching, resulting in improved performance, scalability, and SEO.
+## Rendering Strategies Overview
 
+### CSR (Client-Side Rendering)
+
+```mermaid
+sequenceDiagram
+    participant User
+    participant Client
+    participant Server
+    User->>Client: Requests page
+    Client->>Server: Fetches data with axios
+    Server->>Client: Returns data
+    Client->>User: Renders page
+```
+### SSR (Server-Side Rendering)
+```mermaid
+sequenceDiagram
+    participant User
+    participant Client
+    participant Server
+    User->>Client: Requests page
+    Client->>Server: Calls getServerSideProps
+    Server->>Client: Returns data and HTML
+    Client->>User: Renders page
+```
+### SSG (Static Site Generation)
+```mermaid
+sequenceDiagram
+    participant User
+    participant Client
+    participant Server
+    User->>Client: Requests page
+    Client->>Server: Calls getStaticProps (build time)
+    Server->>Client: Returns static HTML and data
+    Client->>User: Renders page
+
+```
+### ISR (Incremental Static Regeneration)
+```mermaid
+sequenceDiagram
+    participant User
+    participant Client
+    participant Server
+    User->>Client: Requests page
+    Client->>Server: Calls getStaticProps (build time)
+    Server->>Client: Returns static HTML and data
+    Client->>User: Renders page
+    Server->>CDN: Regenerates static page periodically
+```
 ## Pages
 
 1. **CSR (Client-Side Rendering)** - `pages/index.tsx`:  
