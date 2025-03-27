@@ -49,7 +49,8 @@ sequenceDiagram
     Client->>Server: Calls getStaticProps (build time)
     Server->>Client: Returns static HTML and data
     Client->>User: Renders page
-    Server->>CDN: Regenerates static page periodically
+    Client->>Server: Triggers revalidation based on user request
+    Server->>CDN: Regenerates static page if revalidation condition is met
 ```
 ## Pages
 
