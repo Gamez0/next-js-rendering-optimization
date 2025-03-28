@@ -1,0 +1,8 @@
+{
+  "extends": "../../tsconfig.json", // 루트 tsconfig.json을 상속
+  "compilerOptions": {
+    "outDir": "./dist", // 하위 프로젝트에 맞는 설정 추가
+  },
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "exclude": ["node_modules"]
+}
