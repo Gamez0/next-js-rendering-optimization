@@ -1,4 +1,4 @@
-# Next.js Rendering Optimization
+# Next.js Rendering Strategies
 
 ## Introduction
 This repository demonstrates and compares four different data fetching strategies in Next.js: **CSR (Client-Side Rendering)**, **SSR (Server-Side Rendering)**, **SSG (Static Site Generation)**, and **ISR (Incremental Static Regeneration)**. Each of these strategies is applied to different pages in the project to optimize page rendering and data fetching, resulting in improved performance, scalability, and SEO.
