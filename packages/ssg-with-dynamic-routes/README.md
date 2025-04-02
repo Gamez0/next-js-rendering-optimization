@@ -13,13 +13,17 @@ This project demonstrates how to use `generateStaticParams` in Next.js 15 to gen
 - Minimal and efficient Next.js 15 setup
 
 ## Installation
+
 ```bash
 yarn install
 ```
+
 ## Running the Development Server
+
 ```bash
 yarn dev
 ```
+
 ## How It Works
 
 1. The project includes dynamic routes (`[id].tsx`).
@@ -29,19 +33,21 @@ yarn dev
 3. Next.js pre-generates these pages and serves them statically.
 
 ## Example Code
+
 ```tsx
 export async function generateStaticParams() {
-  const res = await fetch('https://jsonplaceholder.typicode.com/posts');
-  const posts = await res.json();
-  return posts.map((post: { id: number }) => ({ id: post.id.toString() }));
+    const res = await fetch('https://jsonplaceholder.typicode.com/posts');
+    const posts = await res.json();
+    return posts.map((post: { id: number }) => ({ id: post.id.toString() }));
 }
 
 export default async function PostPage({ params }: { params: { id: string } }) {
-  const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${params.id}`);
-  const post = await res.json();
-  return <h1>{post.title}</h1>;
+    const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${params.id}`);
+    const post = await res.json();
+    return <h1>{post.title}</h1>;
 }
 ```
+
 ## Why Use `generateStaticParams`?
 
 - Helps pre-render all necessary pages at build time.

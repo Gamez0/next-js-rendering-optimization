@@ -43,13 +43,16 @@ yarn install
 ### 2. Running the Projects
 
 After installing the dependencies, you can run the projects individually.
+
 - CSR, SSR, SSG, and ISR Comparison:
+
 ```bash
 cd packages/csr-ssr-ssg-isr-comparison
 yarn dev
 ```
 
 - Optimizing Dynamic Data Updates with ISR:
+
 ```bash
 cd packages/optimizing-dynamic-data-with-isr
 yarn dev
@@ -62,12 +65,15 @@ yarn dev
 This monorepo uses Lerna to manage packages and dependencies between the projects. Lerna makes it easy to develop and test projects in a monorepo.
 
 To run scripts across all packages, you can use Lerna commands. For example, to run a script in all packages, you can use:
+
 ```bash
 yarn lerna run <script-name>
 ```
 
 ## Yarn Workspaces
+
 We are using Yarn Workspaces to manage dependencies and simplify package management. This allows us to share common dependencies across all projects in the monorepo and avoid duplication.
 
 ## License
+
 This project is licensed under the MIT License - see the LICENSE file for details.
