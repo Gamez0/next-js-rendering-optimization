@@ -1,0 +1,28 @@
+{
+    "name": "optimizing-dynamic-data-with-isr",
+    "root": "packages/optimizing-dynamic-data-with-isr",
+    "sourceRoot": "packages/optimizing-dynamic-data-with-isr/src",
+    "projectType": "application",
+    "targets": {
+        "build": {
+            "executor": "@nx/next:build",
+            "outputs": ["{projectRoot}/.next"],
+            "options": {
+                "outputPath": "packages/optimizing-dynamic-data-with-isr/.next"
+            }
+        },
+        "serve": {
+            "executor": "@nx/next:server",
+            "options": {
+                "buildTarget": "optimizing-dynamic-data-with-isr:build"
+            }
+        },
+        "lint": {
+            "executor": "@nx/eslint:lint",
+            "options": {
+                "lintFilePatterns": ["packages/optimizing-dynamic-data-with-isr/**/*.{ts,tsx,js,jsx}"]
+            }
+        }
+    },
+    "tags": []
+}

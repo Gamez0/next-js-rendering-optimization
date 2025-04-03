@@ -1,0 +1,23 @@
+{
+    "$schema": "./node_modules/nx/schemas/nx-schema.json",
+    "nxCloudId": "67ee22ef10b1822ec0a941f8",
+    "targetDefaults": {
+        "lint": {
+            "dependsOn": ["^lint"],
+            "cache": true
+        },
+        "build": {
+            "outputs": ["{projectRoot}/.next/"],
+            "cache": true
+        }
+    },
+    "plugins": [
+        "@nx/next",
+        {
+            "plugin": "@nx/eslint/plugin",
+            "options": {
+                "targetName": "eslint:lint"
+            }
+        }
+    ]
+}

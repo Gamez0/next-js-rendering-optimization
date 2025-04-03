@@ -1,0 +1,28 @@
+{
+    "name": "ssg-with-dynamic-routes",
+    "root": "packages/ssg-with-dynamic-routes",
+    "sourceRoot": "packages/ssg-with-dynamic-routes/src",
+    "projectType": "application",
+    "targets": {
+        "build": {
+            "executor": "@nx/next:build",
+            "outputs": ["{projectRoot}/.next"],
+            "options": {
+                "outputPath": "packages/ssg-with-dynamic-routes/.next"
+            }
+        },
+        "serve": {
+            "executor": "@nx/next:server",
+            "options": {
+                "buildTarget": "ssg-with-dynamic-routes:build"
+            }
+        },
+        "lint": {
+            "executor": "@nx/eslint:lint",
+            "options": {
+                "lintFilePatterns": ["packages/ssg-with-dynamic-routes/**/*.{ts,tsx,js,jsx}"]
+            }
+        }
+    },
+    "tags": []
+}

@@ -1,16 +1,19 @@
 {
-    "private": true,
-    "workspaces": [
-        "packages/*"
-    ],
-    "scripts": {
-        "format": "prettier --write ."
-    },
-    "devDependencies": {
-        "eslint": "^9.23.0",
-        "eslint-config-prettier": "^10.1.1",
-        "lerna": "^8.2.1",
-        "prettier": "^3.5.3",
-        "typescript": "^5.8.2"
-    }
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "format": "prettier --write ."
+  },
+  "devDependencies": {
+    "eslint": "^9.23.0",
+    "eslint-config-prettier": "^10.1.1",
+    "lerna": "^8.2.1",
+    "nx": "20.7.1",
+    "prettier": "^3.5.3",
+    "typescript": "^5.8.2",
+    "@nx/eslint": "20.7.1",
+    "@nx/next": "20.7.1"
+  }
 }
