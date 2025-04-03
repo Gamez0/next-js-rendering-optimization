@@ -1,0 +1,28 @@
+{
+    "name": "csr-ssr-ssg-isr-comparison",
+    "root": "packages/csr-ssr-ssg-isr-comparison",
+    "sourceRoot": "packages/csr-ssr-ssg-isr-comparison/src",
+    "projectType": "application",
+    "targets": {
+        "build": {
+            "executor": "@nx/next:build",
+            "outputs": ["{projectRoot}/.next"],
+            "options": {
+                "outputPath": "packages/csr-ssr-ssg-isr-comparison/.next"
+            }
+        },
+        "serve": {
+            "executor": "@nx/next:server",
+            "options": {
+                "buildTarget": "csr-ssr-ssg-isr-comparison:build"
+            }
+        },
+        "lint": {
+            "executor": "@nx/eslint:lint",
+            "options": {
+                "lintFilePatterns": ["packages/csr-ssr-ssg-isr-comparison/**/*.{ts,tsx,js,jsx}"]
+            }
+        }
+    },
+    "tags": []
+}
